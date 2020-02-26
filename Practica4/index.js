@@ -9,12 +9,15 @@ function obtieneUbicacion() {
 }
 
 function muestraPosicion(posicion) {
-  var coordenadas = posicion.coords.latitude + "," + posicion.coords.longitude;
-
+  var coordenadas =
+    48.859113 /*posicion.coords.latitude*/ +
+    "," +
+    /*posicion.coords.longitude*/ 2.294181;
+  var mapa = document.getElementById("mapa");
   var imagenurl =
     "https://maps.googleapis.com/maps/api/staticmap?center=" +
     coordenadas +
-    "&zoom=17&size=400x300&sensor=false&key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA";
-
-  document.getElementById("mapa").innerHTML = "<img src='" + imagenurl + "'>";
+    "&zoom=17&size=500x500&sensor=false&key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA";
+  mapa.src = imagenurl;
+  mapa.style.visibility = "visible";
 }
