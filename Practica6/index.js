@@ -31,9 +31,8 @@ movePosition = marker =>{
             lat : position.coords.latitude,
             lng : position.coords.longitude
         }
-        
-    marker.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-    map.pantTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    map.setCenter(pos);
+        marker.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+        map.pantTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        map.setCenter(pos);
     });
 }
