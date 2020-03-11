@@ -1,4 +1,4 @@
-function initMap() {
+initMap = () => {
   var coordinates = {
     lat: 0,
     lng: 0
@@ -9,30 +9,42 @@ function initMap() {
   };
   map = new google.maps.Map(document.getElementById("map"), props);
   var icono = {
-      url : "https://pngimage.net/wp-content/uploads/2018/06/we-are-here-png-2.png",
-      scaledSize: new google.maps.Size(50,50),
-      origin: new google.maps.Point(0,0),
-      anchor: new google.maps.Point(0,0)
-  }
+    url:
+      "https://pngimage.net/wp-content/uploads/2018/06/we-are-here-png-2.png",
+    scaledSize: new google.maps.Size(50, 50),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(0, 0)
+  };
   var marker = new google.maps.Marker({
     position: { lat: 0, lng: 0 },
-    icono : icono,
-    scaledSize : new google.maps.Size(50,50),
-    map : map
+    icono: icono,
+    scaledSize: new google.maps.Size(50, 50),
+    map: map
   });
-  if (navigator.geolocation) setInterval(() =>{
-    movePosition(marker);
-  },5000)
-}
+  if (navigator.geolocation)
+    setInterval(() => {
+      movePosition(marker);
+    }, 5000);
+};
 
-movePosition = marker =>{
-    navigator.geolocation.getCurrentPosition(position => {
-        var pos = {
-            lat : position.coords.latitude,
-            lng : position.coords.longitude
-        }
-        marker.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-        map.pantTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        map.setCenter(pos);
-    });
-}
+movePosition = marker => {
+  navigator.geolocation.getCurrentPosition(position => {
+    var pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+    marker.setPosition(
+      new google.maps.LatLng(
+        position.coords.latitude,
+        position.coords.longitude
+      )
+    );
+    map.pantTo(
+      new google.maps.LatLng(
+        position.coords.latitude,
+        position.coords.longitude
+      )
+    );
+    map.setCenter(pos);
+  });
+};
