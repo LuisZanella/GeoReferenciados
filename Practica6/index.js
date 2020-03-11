@@ -1,9 +1,9 @@
 var map;
-var coordinates = new google.maps.LatLng(0, 0);
-// const coordinates = {
-//   lat: 0,
-//   lng: 0
-// };
+// var coordinates = new google.maps.LatLng(0, 0);
+var coordinates = {
+  lat: 0,
+  lng: 0
+};
 var props = {
   center: coordinates,
   zoom: 20
