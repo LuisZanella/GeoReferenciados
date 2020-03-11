@@ -1,11 +1,12 @@
 // var coordinates = new google.maps.LatLng(0, 0);
+var map;
 var coordinates = {
   center: { lat: 0, lng: 0 },
   zoom: 20
 };
 
 function initMap(params) {
-  var map = new google.maps.Map(document.getElementById("map"), coordinates);
+  map = new google.maps.Map(document.getElementById("map"), coordinates);
   var icon = {
     url:
       "https://pngimage.net/wp-content/uploads/2018/06/we-are-here-png-2.png",
