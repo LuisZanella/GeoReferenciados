@@ -1,12 +1,13 @@
+const map;
+const coordinates = {
+  lat: 0,
+  lng: 0
+};
+const props = {
+  center: coordinates,
+  zoom: 20
+};
 initMap = () => {
-  var coordinates = {
-    lat: 0,
-    lng: 0
-  };
-  var props = {
-    center: coordinates,
-    zoom: 20
-  };
   map = new google.maps.Map(document.getElementById("map"), props);
   var icono = {
     url:
