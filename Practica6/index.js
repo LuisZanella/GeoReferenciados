@@ -35,7 +35,7 @@ function movePosition(marker) {
       position.coords.longitude
     );
     marker.setPosition(location);
-    map.pantTo(location);
+    map.panTo(location);
     map.setCenter(location);
   });
 }
