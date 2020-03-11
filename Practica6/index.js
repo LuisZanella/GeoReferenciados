@@ -11,8 +11,7 @@ var props = {
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), props);
   var icono = {
-    url:
-      "https://pngimage.net/wp-content/uploads/2018/06/we-are-here-png-2.png",
+    url: "",
     scaledSize: new google.maps.Size(50, 50),
     origin: new google.maps.Point(0, 0),
     anchor: new google.maps.Point(0, 0)
