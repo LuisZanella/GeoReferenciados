@@ -11,13 +11,11 @@ function initMap(params) {
     url:
       "https://pngimage.net/wp-content/uploads/2018/06/we-are-here-png-2.png",
     scaledSize: new google.maps.Size(50, 50),
-    origin: new google.maps.Point(0, 0),
-    anchor: new google.maps.Point(0, 0)
+    origin: new google.maps.Point(0, 0)
   };
   var marker = new google.maps.Marker({
     position: { lat: 0, lng: 0 },
     icon,
-    scaledSize: new google.maps.Size(50, 50),
     map
   });
   if (navigator.geolocation) {
