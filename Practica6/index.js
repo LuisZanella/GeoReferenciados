@@ -5,12 +5,12 @@ var coordinates = {
   zoom: 20
 };
 
-function initMap(params) {
+function initMap() {
   map = new google.maps.Map(document.getElementById("map"), coordinates);
   var icon = {
     url:
       "https://pngimage.net/wp-content/uploads/2018/06/we-are-here-png-2.png",
-    scaledSize: new google.maps.Size(50, 50),
+    scaledSize: new google.maps.Size(600, 600),
     origin: new google.maps.Point(0, 0)
   };
   var marker = new google.maps.Marker({
@@ -26,7 +26,7 @@ function initMap(params) {
   }
 }
 
-function movePosition(marker) {
+movePosition = marker => {
   navigator.geolocation.getCurrentPosition(position => {
     let location = new google.maps.LatLng(
       position.coords.latitude,
@@ -36,4 +36,4 @@ function movePosition(marker) {
     map.panTo(location);
     map.setCenter(location);
   });
-}
+};
