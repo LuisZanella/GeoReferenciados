@@ -1,4 +1,3 @@
-var map;
 // var coordinates = new google.maps.LatLng(0, 0);
 var coordinates = {
   center: { lat: 0, lng: 0 },
@@ -6,7 +5,7 @@ var coordinates = {
 };
 
 function initMap(params) {
-  map = new google.maps.Map(document.getElementById("map"), coordinates);
+  var map = new google.maps.Map(document.getElementById("map"), coordinates);
   var icon = {
     url:
       "https://pngimage.net/wp-content/uploads/2018/06/we-are-here-png-2.png",
@@ -14,12 +13,12 @@ function initMap(params) {
     origin: new google.maps.Point(0, 0)
   };
   var marker = new google.maps.Marker({
-    position: { lat: 0, lng: 0 },
+    position: coordinates.center,
     icon,
     map
   });
   if (navigator.geolocation) {
-    // movePosition(marker);
+    movePosition(marker);
     setInterval(() => {
       movePosition(marker);
     }, 3000);
