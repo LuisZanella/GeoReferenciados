@@ -30,16 +30,12 @@ function initMap() {
 
 movePosition = marker => {
   navigator.geolocation.getCurrentPosition(position => {
-    var pos = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude
-    };
     location = new google.maps.LatLng(
       position.coords.latitude,
       position.coords.longitude
     );
     marker.setPosition(location);
     map.pantTo(location);
-    map.setCenter(pos);
+    map.setCenter(location);
   });
 };
