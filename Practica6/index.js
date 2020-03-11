@@ -1,4 +1,4 @@
-const map;
+let map;
 const coordinates = {
   lat: 0,
   lng: 0
