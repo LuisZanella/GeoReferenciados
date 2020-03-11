@@ -10,7 +10,7 @@ function initMap() {
   var icon = {
     url:
       "https://pngimage.net/wp-content/uploads/2018/06/we-are-here-png-2.png",
-    scaledSize: new google.maps.Size(600, 600),
+    scaledSize: new google.maps.Size(100, 100),
     origin: new google.maps.Point(0, 0)
   };
   var marker = new google.maps.Marker({
