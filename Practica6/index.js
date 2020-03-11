@@ -25,7 +25,7 @@ function initMap() {
   if (navigator.geolocation)
     setInterval(() => {
       movePosition(marker);
-    }, 5000000000);
+    }, 3000);
 }
 
 movePosition = marker => {
