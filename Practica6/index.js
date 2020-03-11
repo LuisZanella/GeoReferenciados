@@ -8,7 +8,7 @@ var props = {
   center: coordinates,
   zoom: 20
 };
-initMap = () => {
+function initMap() {
   map = new google.maps.Map(document.getElementById("map"), props);
   var icono = {
     url:
@@ -27,7 +27,7 @@ initMap = () => {
     setInterval(() => {
       movePosition(marker);
     }, 5000);
-};
+}
 
 movePosition = marker => {
   navigator.geolocation.getCurrentPosition(position => {
