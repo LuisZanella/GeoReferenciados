@@ -28,7 +28,7 @@ function initMap() {
     }, 3000);
 }
 
-movePosition = marker => {
+function movePosition(marker) {
   navigator.geolocation.getCurrentPosition(position => {
     location = new google.maps.LatLng(
       position.coords.latitude,
@@ -38,4 +38,4 @@ movePosition = marker => {
     map.pantTo(location);
     map.setCenter(location);
   });
-};
+}
