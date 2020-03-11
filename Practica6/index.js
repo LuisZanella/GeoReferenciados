@@ -28,7 +28,7 @@ function initMap(params) {
 
 function movePosition(marker) {
   navigator.geolocation.getCurrentPosition(position => {
-    location = new google.maps.LatLng(
+    let location = new google.maps.LatLng(
       position.coords.latitude,
       position.coords.longitude
     );
