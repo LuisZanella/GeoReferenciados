@@ -84,6 +84,7 @@ addPosition = () => {
       return data === userName;
     })
     .includes(true);
+  console.log(flag);
   if (!flag && userName !== undefined && userName !== "") {
     navigator.geolocation.getCurrentPosition(position => {
       db.collection("Spy").add({
