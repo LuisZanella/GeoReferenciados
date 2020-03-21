@@ -39,6 +39,7 @@ renderLocations = (doc, cycle) => {
   const tableRef = document
     .getElementById("tableSpy")
     .getElementsByTagName("tbody")[0];
+
   const newRow = tableRef.insertRow();
   const nameCell = newRow.insertCell(0);
   const latitudCell = newRow.insertCell(1);
@@ -73,7 +74,7 @@ function initMap() {
       if (!login) {
         return;
       }
-      document.getElementById("canvas").removeAttribute("visibility");
+      document.getElementById("loged").removeAttribute("class");
       document.getElementById("register").hidden = true;
     }, 3000);
   }
@@ -85,7 +86,6 @@ addPosition = () => {
       return data === userName;
     })
     .includes(true);
-  console.log(flag);
   if (!flag && userName !== undefined && userName !== "") {
     namesRegistered.push(userName);
     navigator.geolocation.getCurrentPosition(position => {
@@ -109,3 +109,22 @@ movePosition = marker => {
     map.setCenter(location);
   });
 };
+db.collection("Spy").onSnapshot(snapshot => {
+  let changes = snapshot.docChanges();
+  let cycle = 0;
+
+  changes.forEach(change => {
+    if (change.type == "added") {
+      renderLocations(change.doc, cycle);
+      cycle++;
+    }
+    if (change.type == "removed") {
+      renderLocations(change.doc, cycle);
+      cycle++;
+    }
+    if (change.type == "modified") {
+      renderLocations(change.doc, cycle);
+      cycle++;
+    }
+  });
+});
