@@ -69,13 +69,13 @@ function initMap() {
         return;
       }
       document.getElementById("canvas").removeAttribute("visibility");
+      document.getElementById("register").hidden = true;
       addPosition();
       movePosition(marker);
     }, 3000);
   }
 }
 addPosition = () => {
-  alert(this.userName);
   navigator.geolocation.getCurrentPosition(position => {
     db.collection("Spy").add({
       Latitude: position.coords.latitude,
