@@ -20,7 +20,7 @@ let userName = "";
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-db.collection("GeoPractica1")
+db.collection("Spy")
   .get()
   .then(snapshot => {
     snapshot.docs.forEach(doc => {
