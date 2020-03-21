@@ -18,6 +18,7 @@ var firebaseConfig = {
 };
 let userName = "";
 const namesRegistered = [];
+var flag = false;
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
@@ -78,7 +79,6 @@ function initMap() {
   }
 }
 addPosition = () => {
-  var flag = false;
   flag = namesRegistered
     .map(data => {
       return data === userName;
