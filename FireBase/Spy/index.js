@@ -113,8 +113,8 @@ db.collection("Spy").onSnapshot(snapshot => {
   let changes = snapshot.docChanges();
   let cycle = 0;
   const table = document.getElementById("tableSpy");
-  while (table.rows.length > 1) {
-    table.deleteRow(1);
+  while (table.rows.length > 0) {
+    table.deleteRow(0);
   }
   changes.forEach(change => {
     if (change.type == "added") {
