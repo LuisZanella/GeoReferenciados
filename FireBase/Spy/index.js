@@ -31,7 +31,7 @@ db.collection("Spy")
 
 register = () => {
   login = true;
-  this.userName = document.getElementById("name").value;
+  userName = document.getElementById("name").value;
 };
 
 renderLocations = (doc, cycle) => {
@@ -45,7 +45,7 @@ renderLocations = (doc, cycle) => {
   const userName = document.createTextNode(doc.data().Name);
   const latitudeUser = document.createTextNode(doc.data().Latitude);
   const longitudeUser = document.createTextNode(doc.data().Longitude);
-  namesRegistered.push(doc.data.Name);
+  namesRegistered.push(doc.data().Name);
   nameCell.appendChild(userName);
   latitudCell.appendChild(latitudeUser);
   longitudeCell.appendChild(longitudeUser);
@@ -81,10 +81,7 @@ addPosition = () => {
   var flag = false;
   flag = namesRegistered
     .map(data => {
-      if (!flag) {
-        flag = data === this.userName;
-      }
-      return flag;
+      return data === userName;
     })
     .includes(true);
   if (!flag) {
@@ -92,7 +89,7 @@ addPosition = () => {
       db.collection("Spy").add({
         Latitude: position.coords.latitude,
         Longitude: position.coords.longitude,
-        Name: this.userName
+        Name: userName
       });
     });
   }
