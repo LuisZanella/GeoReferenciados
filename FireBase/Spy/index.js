@@ -65,13 +65,13 @@ function initMap() {
   if (navigator.geolocation) {
     movePosition(marker);
     setInterval(() => {
+      addPosition();
+      movePosition(marker);
       if (!login) {
         return;
       }
       document.getElementById("canvas").removeAttribute("visibility");
       document.getElementById("register").hidden = true;
-      addPosition();
-      movePosition(marker);
     }, 3000);
   }
 }
