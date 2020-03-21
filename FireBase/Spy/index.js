@@ -18,7 +18,7 @@ var firebaseConfig = {
 };
 let userName = "";
 const namesRegistered = [];
-var registerFlag = true;
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
@@ -79,24 +79,22 @@ function initMap() {
   }
 }
 addPosition = () => {
-  if (registerFlag) {
-    var flag = false;
-    flag = namesRegistered
-      .map(data => {
-        return data === userName;
-      })
-      .includes(true);
-    console.log(flag);
-    if (!flag && userName !== undefined && userName !== "") {
-      register = false;
-      navigator.geolocation.getCurrentPosition(position => {
-        db.collection("Spy").add({
-          Latitude: position.coords.latitude,
-          Longitude: position.coords.longitude,
-          Name: userName
-        });
+  var flag = false;
+  flag = namesRegistered
+    .map(data => {
+      return data === userName;
+    })
+    .includes(true);
+  console.log(flag);
+  if (!flag && userName !== undefined && userName !== "") {
+    userName.push(userName);
+    navigator.geolocation.getCurrentPosition(position => {
+      db.collection("Spy").add({
+        Latitude: position.coords.latitude,
+        Longitude: position.coords.longitude,
+        Name: userName
       });
-    }
+    });
   }
 };
 
