@@ -17,6 +17,7 @@ var firebaseConfig = {
   appId: "1:458764580632:web:4dca2c415b17c7f1f3106d"
 };
 let userName = "";
+const namesRegistered = [];
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
@@ -44,6 +45,7 @@ renderLocations = (doc, cycle) => {
   const userName = document.createTextNode(doc.data().Name);
   const latitudeUser = document.createTextNode(doc.data().Latitude);
   const longitudeUser = document.createTextNode(doc.data().Longitude);
+  namesRegistered.push(doc.data.Name);
   nameCell.appendChild(userName);
   latitudCell.appendChild(latitudeUser);
   longitudeCell.appendChild(longitudeUser);
@@ -76,17 +78,15 @@ function initMap() {
   }
 }
 addPosition = () => {
-  let flag = false;
-  flag = Array.prototype.map.call(
-    document.querySelectorAll("#tableSpy tr"),
-    function(tr) {
-      return Array.prototype.map.call(tr.querySelectorAll("td"), function(td) {
-        if (parseInt(td) == NaN && td === this.userName) {
-          return true;
-        }
-      });
-    }
-  );
+  var flag = false;
+  flag = namesRegistered
+    .map(data => {
+      if (!flag) {
+        flag = data === this.userName;
+      }
+      return flag;
+    })
+    .includes(true);
   if (!flag) {
     navigator.geolocation.getCurrentPosition(position => {
       db.collection("Spy").add({
