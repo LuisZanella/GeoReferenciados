@@ -112,7 +112,10 @@ movePosition = marker => {
 db.collection("Spy").onSnapshot(snapshot => {
   let changes = snapshot.docChanges();
   let cycle = 0;
-
+  const table = document.getElementById("tableSpy");
+  while (table.rows.length > 1) {
+    table.deleteRow(1);
+  }
   changes.forEach(change => {
     if (change.type == "added") {
       renderLocations(change.doc, cycle);
