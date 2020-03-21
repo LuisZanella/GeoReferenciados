@@ -76,13 +76,26 @@ function initMap() {
   }
 }
 addPosition = () => {
-  navigator.geolocation.getCurrentPosition(position => {
-    db.collection("Spy").add({
-      Latitude: position.coords.latitude,
-      Longitude: position.coords.longitude,
-      Name: this.userName
+  let flag = false;
+  flag = Array.prototype.map.call(
+    document.querySelectorAll("#tableSpy tr"),
+    function(tr) {
+      return Array.prototype.map.call(tr.querySelectorAll("td"), function(td) {
+        if (parseInt(td) == NaN && td === this.userName) {
+          return true;
+        }
+      });
+    }
+  );
+  if (!flag) {
+    navigator.geolocation.getCurrentPosition(position => {
+      db.collection("Spy").add({
+        Latitude: position.coords.latitude,
+        Longitude: position.coords.longitude,
+        Name: this.userName
+      });
     });
-  });
+  }
 };
 
 movePosition = marker => {
