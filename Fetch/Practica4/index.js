@@ -55,7 +55,7 @@ function initMap() {
                   });
                   var icono = {
                     url:
-                      "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/biohazard-512.png",
+                      "https://cdn2.iconfinder.com/data/icons/buttons-9/512/Button_Biohazard-01.png",
                     scaledSize: new google.maps.Size(30, 30),
                     origin: new google.maps.Point(0, 0),
                     anchor: new google.maps.Point(0, 0)
