@@ -9,7 +9,7 @@ var propiedades = {
 };
 
 function initMap() {
-  fetch("paises.json")
+  fetch("../paises.json")
     .then(function(response) {
       response.json().then(function(datos) {
         const map = new google.maps.Map(
