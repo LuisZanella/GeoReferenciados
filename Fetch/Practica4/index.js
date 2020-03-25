@@ -8,8 +8,8 @@ var propiedades = {
   zoom: 2
 };
 
-initMap = () => {
-  fetch("../paises.json")
+function initMap() {
+  fetch("paises.json")
     .then(function(response) {
       response.json().then(function(datos) {
         const map = new google.maps.Map(
@@ -17,7 +17,7 @@ initMap = () => {
           propiedades
         );
 
-        console.log(datos);
+        //console.log(datos);
 
         datos.forEach(marcador => {
           fetch("https://corona.lmao.ninja/countries").then(function(
@@ -26,7 +26,11 @@ initMap = () => {
             respuesta.json().then(function(datospaises) {
               datospaises.forEach(registro => {
                 if (registro.country == marcador.CountryName) {
+                  //console.log(registro);
                   var información =
+                    "<img height='50' width='100' src='" +
+                    registro.countryInfo.flag +
+                    "'> " +
                     "<strong>País:</strong> " +
                     registro.country +
                     "<br><strong>Casos:</strong> " +
@@ -49,9 +53,17 @@ initMap = () => {
                   var infowindow = new google.maps.InfoWindow({
                     content: información
                   });
+                  var icono = {
+                    url:
+                      "https://cdn3.iconfinder.com/data/icons/map-markers-1/512/biohazard-512.png",
+                    scaledSize: new google.maps.Size(30, 30),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(0, 0)
+                  };
 
                   let marker = new google.maps.Marker({
                     map: map,
+                    icon: icono,
                     position: new google.maps.LatLng(
                       marcador.CapitalLatitude,
                       marcador.CapitalLongitude
@@ -72,4 +84,4 @@ initMap = () => {
     .catch(function(error) {
       console.log("Hubo un problema con la petición Fetch:" + error.message);
     });
-};
+}
