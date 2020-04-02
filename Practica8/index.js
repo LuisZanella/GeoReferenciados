@@ -10,7 +10,7 @@ document.getElementById("idioma").value = idioma;
 
 var script = document.createElement("script");
 script.src =
-  "https://maps.googleapis.com/maps/api/js?key=AIzaSyDToYkjq7Lp8jc5sRgK2i_7U3t1yZwvlQg&callback=initMap&language=" +
+  "https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=initMap&language=" +
   idioma;
 document.head.appendChild(script);
 
