@@ -1,6 +1,6 @@
 var coordenadas = {
-  lat: -31.56391,
-  lng: 147.154312
+  lat: 21.077771,
+  lng: -101.601164
 };
 
 const queryString = window.location.search;
