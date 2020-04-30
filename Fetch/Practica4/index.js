@@ -10,8 +10,8 @@ var propiedades = {
 
 function initMap() {
   fetch("../paises.json")
-    .then(function(response) {
-      response.json().then(function(datos) {
+    .then(function (response) {
+      response.json().then(function (datos) {
         const map = new google.maps.Map(
           document.getElementById("map"),
           propiedades
@@ -20,10 +20,10 @@ function initMap() {
         //console.log(datos);
 
         datos.forEach(marcador => {
-          fetch("https://corona.lmao.ninja/countries").then(function(
+          fetch("https://corona.lmao.ninja/v2/countries").then(function (
             respuesta
           ) {
-            respuesta.json().then(function(datospaises) {
+            respuesta.json().then(function (datospaises) {
               datospaises.forEach(registro => {
                 if (registro.country == marcador.CountryName) {
                   //console.log(registro);
@@ -71,7 +71,7 @@ function initMap() {
                     title: marcador.CountryName + registro.cases
                   });
 
-                  marker.addListener("click", function() {
+                  marker.addListener("click", function () {
                     infowindow.open(map, marker);
                   });
                 }
@@ -81,7 +81,7 @@ function initMap() {
         });
       });
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.log("Hubo un problema con la petición Fetch:" + error.message);
     });
 }
