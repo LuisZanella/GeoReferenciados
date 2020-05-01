@@ -99,7 +99,7 @@ loginWithGoogle = () => {
         formLogin.querySelector('.error').innerHTML = '';
     }).catch(error => {
         console.error(error);
-    }))
+    })
 }
 
 loginWithFacebook = () => {
@@ -119,5 +119,5 @@ loginWithFacebook = () => {
         formLogin.querySelector('.error').innerHTML = '';
     }).catch(error => {
         console.error(error);
-    }))
+    })
 }
