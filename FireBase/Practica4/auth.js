@@ -85,7 +85,7 @@ formSignUp.addEventListener('submit', (event) => {
 
 loginWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signWithPopup(provider.then(response => {
+    firebase.auth().signWithPopup(provider).then(response => {
         const token = response.credential.accessToken;
         const user = response.user;
         let html = `
@@ -104,7 +104,7 @@ loginWithGoogle = () => {
 
 loginWithFacebook = () => {
     const provider = new firebase.auth.FacebookAuthProvider();
-    firebase.auth().signWithPopup(provider.then(response => {
+    firebase.auth().signWithPopup(provider).then(response => {
         const token = response.credential.accessToken;
         const user = response.user;
         console.log(user);
