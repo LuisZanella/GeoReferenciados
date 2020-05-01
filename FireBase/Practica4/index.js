@@ -14,10 +14,10 @@ const MenuConfiguration = user => {
     db.collection('users').doc(user.uid).get()
         .then(response => {
             let html = ''
-            html += response.data().name ? `<p> Name: ${response.data().name} </p>` : '';
-            html += response.data().email ? `<p> Email: ${user.email} </p>` : '';
-            html += response.data().phone ? `<p> Phone: ${response.data().phone} </p>` : '';
-            html += response.data().address ? `<p> Address: ${response.data().address} </p>` : '';
+            html += response.data() ? `<p> Name: ${response.data().name} </p>` : '';
+            html += `<p> Email: ${user.email} </p>`;
+            html += response.data() ? `<p> Phone: ${response.data().phone} </p>` : '';
+            html += response.data() ? `<p> Address: ${response.data().address} </p>` : '';
             accountData.innerHTML = html;
         });
 

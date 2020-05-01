@@ -107,7 +107,6 @@ loginWithFacebook = () => {
     firebase.auth().signInWithPopup(provider).then(response => {
         const token = response.credential.accessToken;
         const user = response.user;
-        console.log(user);
         let html = `
             <p> Name: ${user.displayName}</p>
             <p> Email: ${user.email}</p>
