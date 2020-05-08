@@ -290,14 +290,16 @@ function initMap() {
                 }
             ]
         }
-    ], { name: 'Modo Oscuro' })
+    ], { name: 'Modo Oscuro' });
     var properties = {
         center: {
             lat: 21.152639,
             lng: -101.711598
         },
         zoom: 14,
-        mapTypeControlOptions: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
+        mapTypeControlOptions: {
+            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
+        }
     }
     var mapElement = document.getElementById("map");
     var map = new google.maps.Map(mapElement, properties);
