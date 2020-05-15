@@ -1,0 +1,25 @@
+img{
+    width: 100%;
+}
+.logged-in{
+    display: none;
+}
+.logged-out{
+    display: none;
+}
+.card-dish{
+  border: 1px solid #eee;
+  box-shadow: 0 2px 3px #ccc;
+  margin: 16px auto;
+  padding: 16px;
+}
+@media (min-width: 500px) {
+    .card-dish {
+      width: "450px";
+    }
+  }
+  .map{
+    margin-top: 20px;
+    height: 85vh;
+    width: 90vw;
+}
