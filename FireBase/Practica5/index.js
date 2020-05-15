@@ -55,5 +55,4 @@ const getFriends = data => {
         info.open(map);
         map.setCenter(pos);
     })
-    console.log(data);
 };
