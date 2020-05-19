@@ -1,4 +1,4 @@
 *.pdf
 *.doc
-*.txt
+# *.txt
 .vscode
