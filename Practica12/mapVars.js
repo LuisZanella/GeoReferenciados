@@ -186,10 +186,6 @@ var styleMapType = new google.maps.StyledMapType([
     }
 ], { name: 'Modo Oscuro' });
 let map = null;
-var marker = new google.maps.Marker({
-    position: properties.center,
-    map: map
-});
 var properties = {
     center: { lat: 21.152639, lng: -101.711598 },
     zoom: 20,
@@ -206,7 +202,10 @@ const loadStandarMap = () => {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
         },
     }
-
+    var marker = new google.maps.Marker({
+        position: properties.center,
+        map: map
+    });
 
     marker.addListener('click', function () {
         mapa1.setZoom(8);
