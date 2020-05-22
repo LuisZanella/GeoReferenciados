@@ -296,7 +296,7 @@ function initMap() {
             lat: 21.152639,
             lng: -101.711598
         },
-        zoom: 14,
+        zoom: 20,
         mapTypeControlOptions: {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
         }
@@ -305,11 +305,6 @@ function initMap() {
     var map = new google.maps.Map(mapElement, properties);
     map.mapTypes.set('style_map', styleMapType);
     map.setMapTypeId('style_map');
-    var coordinates = {
-        center: { lat: 0, lng: 0 },
-        zoom: 20
-    };
-    map = new google.maps.Map(document.getElementById("map"), coordinates);
     var icon = {
         url:
             "https://i.pinimg.com/originals/8d/6a/51/8d6a51bd434804c0acab1d9f9cc311a1.gif",
@@ -318,7 +313,7 @@ function initMap() {
         anchor: new google.maps.Point(0, 0)
     };
     var marker = new google.maps.Marker({
-        position: coordinates.center,
+        position: properties.center,
         icon,
         map
     });
