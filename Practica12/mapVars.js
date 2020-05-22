@@ -19,7 +19,7 @@ const loadStandarMap = () => {
     }
     const marker = new google.maps.Marker({
         position: properties.center,
-        map: map
+        map: mapElement
     });
 
     marker.addListener('click', function () {
