@@ -310,7 +310,7 @@ function initMap() {
         anchor: new google.maps.Point(0, 0)
     };
     var marker = new google.maps.Marker({
-        position: coordinates.center,
+        position: properties.center,
         icon,
         map
     });
