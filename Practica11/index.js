@@ -186,8 +186,7 @@ function initMap() {
             ]
         }
     ], { name: 'Modo Oscuro' });
-    loadStandarMap();
-
+    changeMap();
 }
 
 const changeMap = () => {

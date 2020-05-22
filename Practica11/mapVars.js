@@ -17,13 +17,4 @@ const loadStandarMap = () => {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
         },
     }
-    var marker = new google.maps.Marker({
-        position: properties.center,
-        map: map
-    });
-
-    marker.addListener('click', function () {
-        mapa1.setZoom(8);
-        mapa1.setCenter(marker.getPosition());
-    });
 }
