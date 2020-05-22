@@ -1,6 +1,8 @@
 var mapElement = document.getElementById("map");
 var styleMapType = null;
+var marker = null;
 let map = null;
+
 var properties = {
     center: { lat: 21.152639, lng: -101.711598 },
     zoom: 20,
@@ -17,7 +19,7 @@ const loadStandarMap = () => {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
         },
     }
-    const marker = new google.maps.Marker({
+    marker = new google.maps.Marker({
         position: properties.center,
         map: mapElement
     });
