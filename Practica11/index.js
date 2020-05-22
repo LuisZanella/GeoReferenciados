@@ -304,6 +304,7 @@ function initMap() {
     var mapElement = document.getElementById("map");
     var map = new google.maps.Map(mapElement, properties);
     map.mapTypes.set('style_map', styleMapType);
+    map.setMapTypeId('style_map');
     var coordinates = {
         center: { lat: 0, lng: 0 },
         zoom: 20
