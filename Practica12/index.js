@@ -186,8 +186,9 @@ function initMap() {
             ]
         }
     ], { name: 'Modo Oscuro' });
-    loadStandarMap();
-
+    map = new google.maps.Map(mapElement, properties);
+    map.mapTypes.set('style_map', styleMapType);
+    map.setMapTypeId('style_map');
 }
 
 const changeMap = () => {
@@ -208,10 +209,17 @@ const changeMap = () => {
         default: return;
     }
     map = new google.maps.Map(mapElement, properties);
-    map.mapTypes.set('style_map', styleMapType);
-    map.setMapTypeId('style_map');
 }
+const loadStandarMap = () => {
+    properties = {
+        center: { lat: 21.152639, lng: -101.711598 },
+        zoom: 20,
+        mapTypeControlOptions: {
+            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
+        },
+    }
 
+}
 const loadNoControllsMap = () => {
     properties = {
         center: { lat: 21.152639, lng: -101.711598 },
