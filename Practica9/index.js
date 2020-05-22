@@ -1,5 +1,5 @@
 function initMap() {
-    var styleMapType = new google.maps.StyledMapType([
+    let styleMapType = new google.maps.StyledMapType([
         {
             "elementType": "geometry",
             "stylers": [
@@ -291,7 +291,7 @@ function initMap() {
             ]
         }
     ], { name: 'Modo Oscuro' });
-    var properties = {
+    const properties = {
         center: {
             lat: 21.152639,
             lng: -101.711598
@@ -301,8 +301,8 @@ function initMap() {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
         }
     }
-    var mapElement = document.getElementById("map");
-    var map = new google.maps.Map(mapElement, properties);
+    let mapElement = document.getElementById("map");
+    let map = new google.maps.Map(mapElement, properties);
     map.mapTypes.set('style_map', styleMapType);
     map.setMapTypeId('style_map');
 }

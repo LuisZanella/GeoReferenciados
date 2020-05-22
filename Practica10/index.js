@@ -1,5 +1,5 @@
 function initMap() {
-    var styleMapType = new google.maps.StyledMapType([
+    let styleMapType = new google.maps.StyledMapType([
         {
             "elementType": "geometry",
             "stylers": [
@@ -185,25 +185,25 @@ function initMap() {
             ]
         }
     ], { name: 'Modo Oscuro' });
-    var properties = {
+    const properties = {
         center: { lat: 0, lng: 0 },
         zoom: 20,
         mapTypeControlOptions: {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
         }
     }
-    var mapElement = document.getElementById("map");
-    var map = new google.maps.Map(mapElement, properties);
+    let mapElement = document.getElementById("map");
+    let map = new google.maps.Map(mapElement, properties);
     map.mapTypes.set('style_map', styleMapType);
     map.setMapTypeId('style_map');
-    var icon = {
+    let icon = {
         url:
             "https://i.pinimg.com/originals/8d/6a/51/8d6a51bd434804c0acab1d9f9cc311a1.gif",
         scaledSize: new google.maps.Size(100, 100),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 0)
     };
-    var marker = new google.maps.Marker({
+    let marker = new google.maps.Marker({
         position: properties.center,
         icon,
         map
@@ -216,21 +216,21 @@ function initMap() {
         maximumAge: 30 * 1000
     }
     if (navigator.geolocation) {
-        button.addEventListener("click", function () {
+        button.addEventListener("click", () => {
             watchId = navigator.geolocation.watchPosition((position) => {
                 const lat = position.coords.latitude;
                 const lng = position.coords.longitude;
                 const coords = `${lat} , ${lng}`;
-                const exactitud = position.coords.accuracy ? position.coords.accuracy : 'no disponible';
-                const altitud = position.coords.altitude ? position.coords.altitude : 'no disponible';
-                const speed = position.coords.speed ? position.coords.speed : 'no disponible';
+                const speed = position.coords.speed ? position.coords.speed : '0';
+                const accuracy = position.coords.accuracy ? position.coords.accuracy : '0';
+                const altitude = position.coords.altitude ? position.coords.altitude : '1';
                 const time = (new Date(position.timestamp)).toString();
                 const html = `
-                <p>Coordenadas: ${ coords}</p>
-                <p>Exactitud: ${ exactitud}</p>
-                <p>Altitud: ${ altitud}</p>
-                <p>Velocidad: ${ speed}</p>
-                <p>Fecha y hora: ${ time}</p>`;
+                <p>Coordenadas: ${coords}</p>
+                <p>Exactitud: ${accuracy}</p>
+                <p>Altitud: ${altitude}</p>
+                <p>Velocidad: ${speed}</p>
+                <p>Fecha y hora: ${time}</p>`;
                 const data = document.getElementById('data');
                 data.innerHTML = html;
                 marker.setPosition(new google.maps.LatLng(lat, lng));
@@ -241,14 +241,12 @@ function initMap() {
 
         });
         const botonStopWatch = document.getElementById('btnStopWatch');
-        botonStopWatch.addEventListener('click', function () {
+        botonStopWatch.addEventListener('click', () => {
             if (watchId !== null) {
                 navigator.geolocation.clearWatch(watchId);
-
                 const html = `
-                            <p>Se detuvo el monitoreo</p>
+                            <p>Monitoreo terminado</p>
                         `;
-
                 const datos = document.getElementById('data');
                 datos.innerHTML = html;
 

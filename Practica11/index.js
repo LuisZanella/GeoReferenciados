@@ -1,5 +1,6 @@
+
 function initMap() {
-    var styleMapType = new google.maps.StyledMapType([
+    styleMapType = new google.maps.StyledMapType([
         {
             "elementType": "geometry",
             "stylers": [
@@ -185,79 +186,108 @@ function initMap() {
             ]
         }
     ], { name: 'Modo Oscuro' });
-    var properties = {
-        center: {
-            lat: 21.152639,
-            lng: -101.711598
-        },
-        zoom: 30,
+    map = new google.maps.Map(mapElement, properties);
+    map.mapTypes.set('style_map', styleMapType);
+    map.setMapTypeId('style_map');
+}
+
+const changeMap = () => {
+    const selectedItem = document.getElementById("selectMap").value;
+    switch (selectedItem) {
+        case 'standar': loadStandarMap();
+            break;
+        case 'noControlls': loadNoControllsMap();
+            break;
+        case 'zoomDisabled': loadMapZoomDisabled();
+            break;
+        case 'mapTypeControl': loadMapTypeControl();
+            break;
+        case 'mapPositionControl': loadMapPositionControl();
+            break;
+        case 'mapRestrincted': loadMapRestrincted();
+            break;
+        default: return;
+    }
+    map = new google.maps.Map(mapElement, properties);
+}
+const loadStandarMap = () => {
+    properties = {
+        center: { lat: 21.152639, lng: -101.711598 },
+        zoom: 20,
         mapTypeControlOptions: {
+            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
+        },
+    }
+
+}
+const loadNoControllsMap = () => {
+    properties = {
+        center: { lat: 21.152639, lng: -101.711598 },
+        zoom: 20,
+        mapTypeControlOptions: {
+            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
+        },
+        disableDefaultUI: true
+    }
+}
+const loadMapZoomDisabled = () => {
+    properties = {
+        center: { lat: 21.152639, lng: -101.711598 },
+        zoom: 20,
+        mapTypeControlOptions: {
+            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
+        },
+        zoomControl: false,
+        scaleControl: false
+    }
+}
+const loadMapTypeControl = () => {
+    properties = {
+        center: { lat: 21.152639, lng: -101.711598 },
+        zoom: 20,
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
         }
     }
-    var mapElement = document.getElementById("map");
-    var map = new google.maps.Map(mapElement, properties);
-    map.mapTypes.set('style_map', styleMapType);
-    map.setMapTypeId('style_map');
-    var icon = {
-        url:
-            "https://i.pinimg.com/originals/8d/6a/51/8d6a51bd434804c0acab1d9f9cc311a1.gif",
-        scaledSize: new google.maps.Size(100, 100),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(0, 0)
-    };
-    var marker = new google.maps.Marker({
-        position: properties.center,
-        icon,
-        map
-    });
-    let watchId = null;
-    const button = document.getElementById("btnWatch");
-    let positionOptions = {
-        enableMighAccuarcy: true,
-        zoom: 50,
-        timeout: 10 * 1000,
-        maximumAge: 30 * 1000
+}
+
+const loadMapPositionControl = () => {
+    properties = {
+        center: { lat: 21.152639, lng: -101.711598 },
+        zoom: 20,
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+            position: google.maps.ControlPosition.TOP_CENTER
+        },
+        zoomControl: true,
+        zoomControlOptions: {
+            position: google.maps.ControlPosition.LEFT_CENTER
+        },
+        scaleControl: true,
+        streetViewControl: true,
+        streetViewControlOptions: {
+            position: google.maps.ControlPosition.LEFT_TOP
+        },
+        fullscreenControl: true
     }
-    if (navigator.geolocation) {
-        button.addEventListener("click", function () {
-            watchId = navigator.geolocation.watchPosition((position) => {
-                const lat = position.coords.latitude;
-                const lng = position.coords.longitude;
-                const coords = `${lat} , ${lng}`;
-                const exactitud = position.coords.accuracy ? position.coords.accuracy : 'no disponible';
-                const altitud = position.coords.altitude ? position.coords.altitude : 'no disponible';
-                const speed = position.coords.speed ? position.coords.speed : 'no disponible';
-                const time = (new Date(position.timestamp)).toString();
-                const html = `
-                <p>Coordenadas: ${ coords}</p>
-                <p>Exactitud: ${ exactitud}</p>
-                <p>Altitud: ${ altitud}</p>
-                <p>Velocidad: ${ speed}</p>
-                <p>Fecha y hora: ${ time}</p>`;
-                const data = document.getElementById('data');
-                data.innerHTML = html;
-                marker.setPosition(new google.maps.LatLng(lat, lng));
-                map.panTo(new google.maps.LatLng(lat, lng));
-            }, (error) => {
-                console.error(error);
-            }, positionOptions);
+}
 
-        });
-        const botonStopWatch = document.getElementById('btnStopWatch');
-        botonStopWatch.addEventListener('click', function () {
-            if (watchId !== null) {
-                navigator.geolocation.clearWatch(watchId);
-
-                const html = `
-                            <p>Se detuvo el monitoreo</p>
-                        `;
-
-                const datos = document.getElementById('data');
-                datos.innerHTML = html;
-
-            }
-        });
+const loadMapRestrincted = () => {
+    let limits = {
+        north: 21.390039,
+        south: 20.858414,
+        west: -102.149631,
+        east: -101.092990
     }
-
+    properties = {
+        center: { lat: 21.152639, lng: -101.711598 },
+        zoom: 20,
+        restriction: {
+            latLngBounds: limits,
+            strictBounds: false
+        }
+    }
 }
