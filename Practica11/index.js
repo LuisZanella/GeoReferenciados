@@ -296,7 +296,7 @@ function initMap() {
             lat: 21.152639,
             lng: -101.711598
         },
-        zoom: 15,
+        zoom: 30,
         mapTypeControlOptions: {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
         }
