@@ -296,7 +296,7 @@ function initMap() {
             lat: 21.152639,
             lng: -101.711598
         },
-        zoom: 100,
+        zoom: 30,
         mapTypeControlOptions: {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
         }
@@ -321,6 +321,7 @@ function initMap() {
     const button = document.getElementById("btnWatch");
     let positionOptions = {
         enableMighAccuarcy: true,
+        zoom: 50,
         timeout: 10 * 1000,
         maximumAge: 30 * 1000
     }
