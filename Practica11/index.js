@@ -59,29 +59,11 @@ function initMap() {
             ]
         },
         {
-            "featureType": "administrative.land_parcel",
-            "elementType": "labels",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
             "featureType": "administrative.locality",
             "elementType": "labels.text.fill",
             "stylers": [
                 {
                     "color": "#bdbdbd"
-                }
-            ]
-        },
-        {
-            "featureType": "poi",
-            "elementType": "labels.text",
-            "stylers": [
-                {
-                    "visibility": "off"
                 }
             ]
         },
@@ -95,47 +77,11 @@ function initMap() {
             ]
         },
         {
-            "featureType": "poi.business",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#532900"
-                }
-            ]
-        },
-        {
-            "featureType": "poi.government",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#a639ae"
-                }
-            ]
-        },
-        {
-            "featureType": "poi.medical",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#820000"
-                }
-            ]
-        },
-        {
             "featureType": "poi.park",
             "elementType": "geometry",
             "stylers": [
                 {
                     "color": "#181818"
-                }
-            ]
-        },
-        {
-            "featureType": "poi.park",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#14653f"
                 }
             ]
         },
@@ -154,23 +100,6 @@ function initMap() {
             "stylers": [
                 {
                     "color": "#1b1b1b"
-                }
-            ]
-        },
-        {
-            "featureType": "poi.school",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#003d79"
-                }
-            ]
-        },
-        {
-            "featureType": "poi.sports_complex",
-            "stylers": [
-                {
-                    "color": "#535353"
                 }
             ]
         },
@@ -202,15 +131,6 @@ function initMap() {
             ]
         },
         {
-            "featureType": "road.arterial",
-            "elementType": "labels",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
             "featureType": "road.highway",
             "elementType": "geometry",
             "stylers": [
@@ -220,37 +140,11 @@ function initMap() {
             ]
         },
         {
-            "featureType": "road.highway",
-            "elementType": "labels",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
             "featureType": "road.highway.controlled_access",
             "elementType": "geometry",
             "stylers": [
                 {
                     "color": "#4e4e4e"
-                }
-            ]
-        },
-        {
-            "featureType": "road.local",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "road.local",
-            "elementType": "labels",
-            "stylers": [
-                {
-                    "visibility": "off"
                 }
             ]
         },
