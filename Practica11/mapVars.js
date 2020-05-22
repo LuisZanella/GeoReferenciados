@@ -18,7 +18,7 @@ const loadStandarMap = () => {
         },
     }
     var marker = new google.maps.Marker({
-        position: coordenadas,
+        position: properties.center,
         map: mapa
     });
 
