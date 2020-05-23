@@ -25,7 +25,7 @@ const loadStandarMap = () => {
     });
 
     marker.addListener('click', function () {
-        mapa1.setZoom(8);
-        mapa1.setCenter(marker.getPosition());
+        mapElement.setZoom(8);
+        mapElement.setCenter(marker.getPosition());
     });
 }
