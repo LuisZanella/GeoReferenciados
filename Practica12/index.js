@@ -207,10 +207,31 @@ const changeMap = () => {
         default: return;
     }
     map = new google.maps.Map(mapElement, properties);
+    marker = new google.maps.Marker({
+        position: coordenadas,
+        map: properties.position
+    });
     map.mapTypes.set('style_map', styleMapType);
     map.setMapTypeId('style_map');
+    setMark();
 }
-
+const setMark = () => {
+    switch (selectedItem) {
+        case 'standar': loadStandarMapMarker();
+            break;
+        case 'noControlls': loadNoControllsMapMarker();
+            break;
+        case 'zoomDisabled': loadMapZoomDisabledMarker();
+            break;
+        case 'mapTypeControl': loadMapTypeControl();
+            break;
+        case 'mapPositionControl': loadMapPositionControl();
+            break;
+        case 'mapRestrincted': loadMapRestrincted();
+            break;
+        default: return;
+    }
+}
 const loadNoControllsMap = () => {
     properties = {
         center: { lat: 21.152639, lng: -101.711598 },
@@ -220,6 +241,13 @@ const loadNoControllsMap = () => {
         },
         disableDefaultUI: true
     }
+}
+const loadNoControllsMapMarker = () => {
+    map.addListener('center_changed', function () {
+        window.setTimeout(function () {
+            map.panTo(marker.getPosition());
+        }, 3000);
+    });
 }
 const loadMapZoomDisabled = () => {
     properties = {
@@ -232,6 +260,18 @@ const loadMapZoomDisabled = () => {
         scaleControl: false
     }
 }
+const loadMapZoomDisabledMarker = () => {
+    let infowindow = new google.maps.InfoWindow({
+        content: 'Cambia el zoom',
+        position: properties.position
+    });
+
+    infowindow.open(map);
+
+    map.addListener('zoom_changed', function () {
+        infowindow.setContent('Zoom' + map.getZoom());
+    });
+}
 const loadMapTypeControl = () => {
     properties = {
         center: { lat: 21.152639, lng: -101.711598 },
@@ -243,7 +283,20 @@ const loadMapTypeControl = () => {
         }
     }
 }
+const loadMapTypeControlMaker = () => {
+    mapa.addListener('click', function (e) {
+        console.log(e.latLng);
+        setMarker(e.latLng);
+    });
+}
+const setMarker = (latLng) => {
 
+    marker = new google.maps.Marker({
+        position: latLng,
+        map: map
+    });
+    map.panTo(latLng);
+}
 const loadMapPositionControl = () => {
     properties = {
         center: { lat: 21.152639, lng: -101.711598 },
@@ -265,7 +318,19 @@ const loadMapPositionControl = () => {
         fullscreenControl: true
     }
 }
-
+const loadMapPositionControlMarker = () => {
+    let infowindow = new google.maps.InfoWindow({
+        content: 'Haz click para obtener las coordenadas',
+        position: coordenadas
+    });
+    infowindow.open(map);
+    map.addListener('click', (event) => {
+        infowindow.close();
+        infowindow = new google.maps.InfoWindow({ position: event.latLng });
+        infowindow.setContent(event.latLng.toString());
+        infowindow.open(map);
+    });
+}
 const loadMapRestrincted = () => {
     let limits = {
         north: 21.390039,
@@ -281,4 +346,14 @@ const loadMapRestrincted = () => {
             strictBounds: false
         }
     }
+}
+const loadMapRestrinctedMarker = () => {
+    google.maps.event.addDomListener(map, 'click', function () {
+        window.alert(' Se hizo click en el mapa');
+    });
+
+    var boton = document.getElementById('btnCentrar');
+    google.maps.event.addDomListener(boton, 'click', function () {
+        map.panTo(coordenadas);
+    });
 }
