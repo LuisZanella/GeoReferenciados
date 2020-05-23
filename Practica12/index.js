@@ -216,6 +216,7 @@ const changeMap = () => {
     setMark();
 }
 const setMark = () => {
+    const selectedItem = document.getElementById("selectMap").value;
     switch (selectedItem) {
         case 'standar': loadStandarMapMarker();
             break;
