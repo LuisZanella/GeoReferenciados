@@ -210,7 +210,7 @@ const changeMap = () => {
     map.mapTypes.set('style_map', styleMapType);
     map.setMapTypeId('style_map');
     marker = new google.maps.Marker({
-        position: properties.position,
+        position: properties.center,
         map: map
     });
     setMark();
