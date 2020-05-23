@@ -15,14 +15,14 @@
         <div class="row" style="margin-top: 20px">
             <div class="col-12 text-center d-flex justify-content-between"
                 style="box-shadow: 2px 10px 50px 50px #eee; border: 1px solid black;">
-                <label for="SelectMap" class="my-auto"><b>Seleccione el mapa deseado:</b></label>
+                <label for="SelectMap" class="my-auto"><b>Seleccione la opcion del marcador:</b></label>
                 <select name=" SelectMap" id="selectMap" onchange="changeMap()" style="margin: 10px;">
-                    <option value="standar">Standar</option>
-                    <option value="noControlls">Sin Controles</option>
-                    <option value="zoomDisabled">Sin Zoom</option>
-                    <option value="mapTypeControl">Control cambia de posición</option>
-                    <option value="mapPositionControl">Control de la posicion</option>
-                    <option value="mapRestrincted">Mapa Restringido</option>
+                    <option value="standar">Quitar Zoom</option>
+                    <option value="noControlls">Regresar al punto</option>
+                    <option value="zoomDisabled">Mostar posicion del zoom</option>
+                    <option value="mapTypeControl">Poner markers</option>
+                    <option value="mapPositionControl">Mostrar coordenas al clickear</option>
+                    <option value="mapRestrincted">Centrar al dar click al boton</option>
                 </select>
                 <button id="btnCenter">Centrar</button>
             </div>

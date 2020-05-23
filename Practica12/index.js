@@ -257,7 +257,7 @@ const loadMapZoomDisabled = () => {
         mapTypeControlOptions: {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'style_map']
         },
-        zoomControl: false,
+        zoomControl: true,
         scaleControl: false
     }
 }
