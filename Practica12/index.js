@@ -208,8 +208,8 @@ const changeMap = () => {
     }
     map = new google.maps.Map(mapElement, properties);
     marker = new google.maps.Marker({
-        position: coordenadas,
-        map: properties.position
+        position: properties.position,
+        map: map
     });
     map.mapTypes.set('style_map', styleMapType);
     map.setMapTypeId('style_map');
@@ -321,7 +321,7 @@ const loadMapPositionControl = () => {
 const loadMapPositionControlMarker = () => {
     let infowindow = new google.maps.InfoWindow({
         content: 'Haz click para obtener las coordenadas',
-        position: coordenadas
+        position: properties.position
     });
     infowindow.open(map);
     map.addListener('click', (event) => {
@@ -354,6 +354,6 @@ const loadMapRestrinctedMarker = () => {
 
     var boton = document.getElementById('btnCentrar');
     google.maps.event.addDomListener(boton, 'click', function () {
-        map.panTo(coordenadas);
+        map.panTo(properties.position);
     });
 }
