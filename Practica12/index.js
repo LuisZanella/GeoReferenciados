@@ -285,7 +285,7 @@ const loadMapTypeControl = () => {
     }
 }
 const loadMapTypeControlMarker = () => {
-    mapa.addListener('click', function (e) {
+    map.addListener('click', function (e) {
         console.log(e.latLng);
         setMarker(e.latLng);
     });
@@ -350,7 +350,7 @@ const loadMapRestrincted = () => {
 }
 const loadMapRestrinctedMarker = () => {
     google.maps.event.addDomListener(map, 'click', function () {
-        window.alert(' Se hizo click en el mapa');
+        window.alert(' Se hizo click en el map');
     });
 
     var boton = document.getElementById('btnCentrar');
