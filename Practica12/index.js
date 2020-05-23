@@ -224,11 +224,11 @@ const setMark = () => {
             break;
         case 'zoomDisabled': loadMapZoomDisabledMarker();
             break;
-        case 'mapTypeControl': loadMapTypeControl();
+        case 'mapTypeControl': loadMapTypeControlMarker();
             break;
-        case 'mapPositionControl': loadMapPositionControl();
+        case 'mapPositionControl': loadMapPositionControlMarker();
             break;
-        case 'mapRestrincted': loadMapRestrincted();
+        case 'mapRestrincted': loadMapRestrinctedMarker();
             break;
         default: return;
     }
