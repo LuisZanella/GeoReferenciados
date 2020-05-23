@@ -207,12 +207,12 @@ const changeMap = () => {
         default: return;
     }
     map = new google.maps.Map(mapElement, properties);
+    map.mapTypes.set('style_map', styleMapType);
+    map.setMapTypeId('style_map');
     marker = new google.maps.Marker({
         position: properties.position,
         map: map
     });
-    map.mapTypes.set('style_map', styleMapType);
-    map.setMapTypeId('style_map');
     setMark();
 }
 const setMark = () => {
