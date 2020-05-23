@@ -264,7 +264,7 @@ const loadMapZoomDisabled = () => {
 const MarkerShowZoomPosition = () => {
     let infowindow = new google.maps.InfoWindow({
         content: 'Cambia el zoom',
-        position: properties.position
+        position: properties.center
     });
 
     infowindow.open(map);
