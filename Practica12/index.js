@@ -218,17 +218,17 @@ const changeMap = () => {
 const setMark = () => {
     const selectedItem = document.getElementById("selectMap").value;
     switch (selectedItem) {
-        case 'standar': loadStandarMapMarker();
+        case 'standar': MarkerRemoveZoom();
             break;
-        case 'noControlls': loadNoControllsMapMarker();
+        case 'noControlls': MarkerReturnPoint();
             break;
-        case 'zoomDisabled': loadMapZoomDisabledMarker();
+        case 'zoomDisabled': MarkerShowZoomPosition();
             break;
-        case 'mapTypeControl': loadMapTypeControlMarker();
+        case 'mapTypeControl': SetMarkerOnClick();
             break;
-        case 'mapPositionControl': loadMapPositionControlMarker();
+        case 'mapPositionControl': ShowOnClickCoords();
             break;
-        case 'mapRestrincted': loadMapRestrinctedMarker();
+        case 'mapRestrincted': OnClickPanCenter();
             break;
         default: return;
     }
@@ -243,7 +243,7 @@ const loadNoControllsMap = () => {
         disableDefaultUI: true
     }
 }
-const loadNoControllsMapMarker = () => {
+const MarkerReturnPoint = () => {
     map.addListener('center_changed', function () {
         window.setTimeout(function () {
             map.panTo(marker.getPosition());
@@ -261,7 +261,7 @@ const loadMapZoomDisabled = () => {
         scaleControl: false
     }
 }
-const loadMapZoomDisabledMarker = () => {
+const MarkerShowZoomPosition = () => {
     let infowindow = new google.maps.InfoWindow({
         content: 'Cambia el zoom',
         position: properties.position
@@ -284,7 +284,7 @@ const loadMapTypeControl = () => {
         }
     }
 }
-const loadMapTypeControlMarker = () => {
+const SetMarkerOnClick = () => {
     map.addListener('click', function (e) {
         console.log(e.latLng);
         setMarker(e.latLng);
@@ -319,7 +319,7 @@ const loadMapPositionControl = () => {
         fullscreenControl: true
     }
 }
-const loadMapPositionControlMarker = () => {
+const ShowOnClickCoords = () => {
     let infowindow = new google.maps.InfoWindow({
         content: 'Haz click para obtener las coordenadas',
         position: properties.position
@@ -348,12 +348,12 @@ const loadMapRestrincted = () => {
         }
     }
 }
-const loadMapRestrinctedMarker = () => {
+const OnClickPanCenter = () => {
     google.maps.event.addDomListener(map, 'click', function () {
         window.alert(' Se hizo click en el map');
     });
     var button = document.getElementById('btnCenter');
     google.maps.event.addDomListener(button, 'click', function () {
-        map.panTo(properties.position);
+        map.panTo(properties.center);
     });
 }

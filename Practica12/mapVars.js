@@ -20,7 +20,7 @@ const loadStandarMap = () => {
         },
     }
 }
-const loadStandarMapMarker = () => {
+const MarkerRemoveZoom = () => {
     marker.addListener('click', function () {
         map.setZoom(8);
         map.setCenter(marker.getPosition());
