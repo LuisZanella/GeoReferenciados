@@ -353,7 +353,7 @@ const loadMapRestrinctedMarker = () => {
         window.alert(' Se hizo click en el map');
     });
     var button = document.getElementById('btnCenter');
-    google.maps.event.addDomListener(boton, 'click', function () {
+    google.maps.event.addDomListener(button, 'click', function () {
         map.panTo(properties.position);
     });
 }
