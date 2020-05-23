@@ -284,7 +284,7 @@ const loadMapTypeControl = () => {
         }
     }
 }
-const loadMapTypeControlMaker = () => {
+const loadMapTypeControlMarker = () => {
     mapa.addListener('click', function (e) {
         console.log(e.latLng);
         setMarker(e.latLng);
